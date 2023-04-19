@@ -415,13 +415,12 @@ db.posts.find({
 });
 ```
 >__Note__  
--The expression **{ $size: "$comments" }** returns the size of the comments array for a given document.
-<br>  
--The gt operator returns true if the first operand is greater than the second operand.  
-<br>  
--First operand here is the length of the array, and second is 1. If the length of comments is greater than 1, the post is displayed.   
-<br>  
+-The expression **{ $size: "$comments" }** returns the size of the comments array for a given document.  
+-The gt operator returns true if the first operand is greater than the second operand.    
+-First operand here is the length of the array, and second is 1. If the length of comments is greater than 1, the post is displayed.     
 -In MongoDB's aggregation framework, the $ symbol is used to indicate that a field name is being referred to as a variable, rather than as a string literal. "$comments" is not being treated as a string literal that represents the name of the field, but as a variable that will be replaced by the actual value of the comments field for each document in the returned collection.
+
+
 
 * Select the last post created
 * Select 5 latest posts
