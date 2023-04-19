@@ -12,14 +12,26 @@
 * MongoDB
 * Mongosh terminal
 
+# Table of contents
+
+  - [Objectives](#objectives)
+  - [Tools](#tools)
+  - [Tasks](#tasks)
+  - [1.1 Develop the Project](#11-develop-the-project)
+  - [1.2.1 INSERT DATA](#121-insert-data)
+  - [1.2.2 UPDATE DATA](#122-update-data)
+  - [1.2.3 GET DATA](#123-get-data)
+  - [1.2.4 DELETE DATA](#124-delete-data)
+  - [1.3 BONUS](#13-bonus)
+
 ## Tasks
 
-1.1. Develop the Project
+## 1.1 Develop the Project
 
 Create your own social network database with the following collections:
 * Users
 * Posts
-  * Comments *
+  * Comments
 
 
 **Creating the database:**
@@ -36,7 +48,7 @@ db.createCollection("posts");
 
 1.2. Running Queries
 
-1.2.1 INSERT DATA
+## 1.2.1 INSERT DATA
 
 Insert at least 10 new users:
 * Username
@@ -72,10 +84,6 @@ db.posts.insertOne(
           }]
 });
 ```
-
-
-
-
 
 ### 🔷InsertMany()
 
@@ -129,7 +137,7 @@ Example result:
 ○ Age 
 
 
-1.2.2 UPDATE DATA
+## 1.2.2 UPDATE DATA
 
 Update publications:
 * Update all fields of a post
@@ -253,7 +261,7 @@ To:
 
 
 
-1.2.3 GET DATA
+## 1.2.3 GET DATA
 
 * Select all posts
 * Select the publications that match the indicated username
@@ -275,7 +283,7 @@ db.posts.find({username:"TravelBug88"});
 ```
 db.users.find({age: {$gt:20}});
 ```
-### {🔶$lt:*value*} (less than)
+### 🔶{$lt:*value*} (less than)
 
 ```
 socialMediaApr19> db.users.find({age: {$lt:20}});
@@ -293,9 +301,6 @@ db.users.find({
     ]
   });
 ```
-
-
-
 
 
 * Show users from youngest to oldest and vice versa
@@ -347,7 +352,6 @@ Shows the first 2.
 db.users.find().limit(2);
 ```
 
-
 * Search by title 2 publications 
 ### 🔷createIndex() and 🔶{$text:{$search: *search string* }}
 
@@ -364,7 +368,7 @@ db.posts.find({
   }).limit(2);
 ```
 
-1.2.4 DELETE DATA
+## 1.2.4 DELETE DATA
 
 * Remove all users older than 30
 ```
@@ -375,7 +379,7 @@ result: 6 users were deleted as informed by the terminal
 { acknowledged: true, deletedCount: 6 }
 ```
 
-1.3 BONUS
+## 1.3 BONUS
 
 * Select the total number of posts that have more than one comment
 
@@ -411,12 +415,9 @@ db.posts.find({
 });
 ```
 >__NOTE__  
->1. The expression **{ $size: "$comments" }** returns the size of the comments array for a given document.
->2. The $gt operator returns true **if the first operand is greater than the second operand**.
->3. First operand here is the length of the array, and second is 1. If the length of comments is greater than 1, the post is displayed. 
->4. In MongoDB's aggregation framework, the $ symbol is used to indicate that a field name is being referred to as a variable, rather than as a string literal.
- "$comments" is not being treated as a string literal that represents the name of the field, but as a variable that will be replaced by the actual value of the comments field for each document in the returned collection.
-
+-The expression **{ $size: "$comments" }** returns the size of the comments array for a given document.  
+-The gt operator returns true if the first operand is greater than the second operand.-First operand here is the length of the array, and second is 1. If the length of comments is greater than 1, the post is displayed.   
+-In MongoDB's aggregation framework, the $ symbol is used to indicate that a field name is being referred to as a variable, rather than as a string literal. "$comments" is not being treated as a string literal that represents the name of the field, but as a variable that will be replaced by the actual value of the comments field for each document in the returned collection.
 
 * Select the last post created
 * Select 5 latest posts
